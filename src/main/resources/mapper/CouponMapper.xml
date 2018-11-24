@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ag.manage.mapper.CouponMapper">
+
+<select id="selectCouponList" resultType="java.util.Map">
+    SELECT
+     id,coupon_name,coupon_type,limit_condition,apply_range,
+     DATE_FORMAT(deadline,'%Y-%m-%d')as deadline,
+     coupon_desc,min_price,discount,discount_desc,
+        ( CASE
+        WHEN deadline > now() THEN
+        '未过期'
+        ELSE
+        '已过期'
+        END
+        ) AS deadline_state,create_time
+    FROM coupon
+    WHERE
+
+      `status` <![CDATA[ <> ]]> 0 AND kind=0
+    <if test="couponName!=null and ''!=couponName">
+        AND coupon_name like concat('%',#{couponName},'%')
+    </if>
+    <if test="couponDesc!=null and ''!=couponDesc">
+        AND discount_desc like concat('%',#{couponDesc},'%')
+    </if>
+    <if test="couponType!=null and ''!=couponType">
+        AND  coupon_type= #{couponType}
+    </if>
+    <if test="deadlineStartTime!=null and ''!=deadlineStartTime">
+        AND deadline <![CDATA[ >= ]]> #{deadlineStartTime}
+    </if>
+    <if test="deadlineStopTime !=null and ''!=deadlineStopTime">
+        AND deadline <![CDATA[ <= ]]> #{deadlineStopTime}
+    </if>
+    <if test="createStartTime!=null and ''!=createStartTime">
+        AND create_time <![CDATA[ >= ]]> #{createStartTime}
+    </if>
+    <if test="createStopTime !=null and ''!=createStopTime">
+         AND create_time <![CDATA[ <= ]]> #{createStopTime}
+    </if>
+    <if test='deadlineState!=null and deadlineState==1 '>
+        AND  deadline<![CDATA[ < ]]>  now()
+    </if>
+    <if test='deadlineState!=null and deadlineState==2 '>
+        AND  deadline<![CDATA[ >= ]]> now()
+    </if>
+    ORDER BY  create_time DESC
+</select>
+
+
+    <select id="selectCouponBusioness" resultType="java.util.Map">
+        SELECT
+        id, coupon_name, coupon_type,
+        limit_condition,apply_range, DATE_FORMAT(deadline,'%Y-%m-%d')as deadline,
+         DATE_FORMAT(display_start_time,'%Y-%m-%d')as display_start_time ,
+        DATE_FORMAT(display_stop_time,'%Y-%m-%d')as display_stop_time,  `status`,coupon_desc,min_price,discount,discount_desc,
+        (
+         CASE
+          WHEN `status`=1  THEN
+         (
+            CASE
+            WHEN now() <![CDATA[ < ]]> display_start_time AND now()  <![CDATA[ < ]]> display_stop_time THEN
+            '预约展示'
+            WHEN now() > display_start_time    AND now() > display_stop_time THEN
+            '已展示'
+            ELSE
+            '展示中'
+            END
+         )
+        END
+        ) AS coupon_state, create_time
+        FROM
+        coupon
+        WHERE
+        shop_id=#{shopId}
+         AND  `status` <![CDATA[ <> ]]> 0
+        <if test="status!=null and status!=0 and ''!=status">
+            AND  `status`= #{status}
+        </if>
+        <if test="couponName!=null and ''!=couponName">
+            AND coupon_name like concat('%',#{couponName},'%')
+        </if>
+        <if test="couponDesc!=null and ''!=couponDesc">
+            AND discount_desc like concat('%',#{couponDesc},'%')
+        </if>
+        <if test="deadlineStartTime!=null  and ''!=deadlineStartTime">
+            AND deadline <![CDATA[ >= ]]> #{deadlineStartTime}
+        </if>
+        <if test=" deadlineStopTime !=null and ''!=deadlineStopTime">
+            AND deadline <![CDATA[ <= ]]> #{deadlineStopTime}
+        </if>
+        <if test="createStartTime!=null and ''!=createStartTime">
+            AND create_time <![CDATA[ >= ]]> #{createStartTime}
+        </if>
+        <if test="createStopTime !=null and ''!=createStopTime">
+            AND create_time <![CDATA[ <= ]]> #{createStopTime}
+        </if>
+        <if test="couponState!=null and couponState==1 ">
+            AND now()  <![CDATA[ < ]]>display_start_time AND now()  <![CDATA[ < ]]> display_stop_time
+        </if>
+        <if test="couponState!=null and couponState==2 ">
+            AND now()  <![CDATA[ >= ]]>display_start_time AND now()  <![CDATA[ <= ]]> display_stop_time
+        </if>
+        <if test="couponState!=null and couponState==3 ">
+            AND now() > display_start_time AND now() > display_stop_time
+        </if>
+        ORDER BY  create_time DESC
+    </select>
+
+</mapper>

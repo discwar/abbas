@@ -1,0 +1,4 @@
+# 默认开发环境，开发环境（dev）、测试环境（test）、生产环境（prod）
+spring:
+  profiles:
+    active: dev
