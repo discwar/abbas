@@ -12,7 +12,7 @@ server:
 #日志配置
 logging:
   level:
-    com.ag.manage.mapper: debug
+    com.major.mapper: debug
     org.springframework: WARN
     org.spring.springboot.dao: debug
 #用户配置
@@ -30,7 +30,7 @@ spring:
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
-  profiles: 
+  profiles:
     active: druid
   http:
     multipart:
@@ -42,9 +42,9 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://rm-bp1801f1891zq36337j9o.mysql.rds.aliyuncs.com:3306/ag_db_dev?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
-    username: aiguo3
-    password: aiguo20183!
+    url: jdbc:mysql://127.0.0.1:3306/abbas_db_dev?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: 123456
     # 初始化大小，最小，最大
     initialSize: 1
     minIdle: 3
@@ -69,7 +69,7 @@ spring:
     # 合并多个DruidDataSource的监控数据
     #useGlobalDataSourceStat: true
 # PageHelper
-pagehelper: 
+pagehelper:
   helperDialect: mysql
   reasonable: true
   supportMethodsArguments: true
@@ -80,36 +80,36 @@ mybatis-plus:
   # 如果是放在resource目录 classpath:/mapper/*Mapper.xml
   mapper-locations: classpath:mapper/**/*Mapper.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: com.ag.manage.entity
+  typeAliasesPackage: com.major.entity
   global-config:
-      #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
-      id-type: 0
-      #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
-      field-strategy: 2
-      #驼峰下划线转换
-      db-column-underline: true
-      #mp2.3+ 全局表前缀 mp_
-      #table-prefix: mp_
-      #刷新mapper 调试神器
-      #refresh-mapper: true
-      #数据库大写下划线转换
-      #capital-mode: true
-      # Sequence序列接口实现类配置
-      key-generator: com.baomidou.mybatisplus.incrementer.OracleKeyGenerator
-      #逻辑删除配置（下面3个配置）
-      logic-delete-value: 0
-      logic-not-delete-value: 1
-      sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
-      #自定义填充策略接口实现
-      meta-object-handler: MyMetaObjectHandler
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 0
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 2
+    #驼峰下划线转换
+    db-column-underline: true
+    #mp2.3+ 全局表前缀 mp_
+    #table-prefix: mp_
+    #刷新mapper 调试神器
+    #refresh-mapper: true
+    #数据库大写下划线转换
+    #capital-mode: true
+    # Sequence序列接口实现类配置
+    key-generator: com.baomidou.mybatisplus.incrementer.OracleKeyGenerator
+    #逻辑删除配置（下面3个配置）
+    logic-delete-value: 0
+    logic-not-delete-value: 1
+    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+    #自定义填充策略接口实现
+    meta-object-handler: com.major.config.MyMetaObjectHandler
   configuration:
-      #配置返回数据库(column下划线命名&&返回java实体是驼峰命名)，自动匹配无需as（没开启这个，SQL需要写as： select user_id as userId）
-      map-underscore-to-camel-case: true
-      cache-enabled: false
-      #配置JdbcTypeForNull, oracle数据库必须配置
-      jdbc-type-for-null: 'null'
-      # 显示查询数据NULL时的字段，默认隐藏
-      call-setters-on-nulls: true
+    #配置返回数据库(column下划线命名&&返回java实体是驼峰命名)，自动匹配无需as（没开启这个，SQL需要写as： select user_id as userId）
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    #配置JdbcTypeForNull, oracle数据库必须配置
+    jdbc-type-for-null: 'null'
+    # 显示查询数据NULL时的字段，默认隐藏
+    call-setters-on-nulls: true
 # Shiro
 shiro:
   user:
@@ -125,7 +125,7 @@ shiro:
     captchaType: math
   cookie:
     # 设置Cookie的域名 默认空，即当前访问的域名
-    domain: 
+    domain:
     # 设置cookie的有效访问路径
     path: /
     # 设置HttpOnly属性
@@ -161,9 +161,9 @@ shiro:
 # 阿里云
 ali:
   # 用户访问key
-  access-key-id: LTAIZssx43Q433tVAv33i
+  access-key-id: LTAIZssx4Q4tVAvi
   # 用户访问密钥
-  access-key-secret: SjmPvH7AL333gp6vgxBL14zJXHGv2pWD33k
+  access-key-secret: SjmPvH7ALgp6vgxBL14zJXHGv2pWDk
   # 短信配置
   sms:
     #超时设置
@@ -180,7 +180,7 @@ ali:
   # 文件存储配置
   oss:
     # 外网访问地域节点
-    endPoint: oss-cn-hang33z3hou.aliyuncs.com
+    endPoint: oss-cn-hangzhou.aliyuncs.com
     #app端文件统一存放路径(根目录)
     agAppFileList: ag/app/
     #管理端端文件统一存放路径(根目录)
@@ -190,40 +190,40 @@ ali:
     #爱果默认文件存放地址(根目录)
     agDefaultFileList: ag/default/
     # 容器名称
-    bucketName: missf3reshf3ruits
+    bucketName: missfreshfruits
     #CDN配置
-    cdn: http://img-test.mi33s3sfruits.cn
+    cdn: http://img-test.missfruits.cn
   pay:
     # 收款支付宝账号对应的支付宝唯一用户号
-    pid: 20882317362880177
+    pid: 2088231762880177
     # APPID即创建应用后生成
-    appId: 201609170052853368
+    appId: 2016091700528568
     # 开发者应用私钥，由开发者自己生成
-    appPrivateKey: MIIEvAIB333ADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCLpRHdDLRZQuwUkBB1tVU3Gd2IRrqYd/0fYDb/fuG3xOswC8/SjcAbU0WLu0Rd1hUrzVEalcw3uyiwMsgj8Tv1HkELhEAedT3BqU96l8do/WoNR2l+H0mx/2rv41Ec7dZd84+zULIasNX8ayvyX7OJBusWsLxRpOekGteHbGcziOPQ3SsfmAGsJFzymP2/vDuFWwMODYkL4X3ZG7leDyURYIOyjE8xx7SLxlRXhDoPAW5O9VahZCp19xeRj+kC5JjTBnBpUbWMsE+STlXyIuX/RCH9jdDOd9qIVRasMhJzuBjG/S6TsHAqcgBIxe+G9ntgmQWPMmpPLD79e//VsobJAgMBAAECggEAWJJ6ohpMydEIrIIz7nT1d92QBb/W2p5AjoYYXDW+NTFRe0gCqSn/j1Vh5x8AXgRLqVyw9IvO3Ap55EhRaXq47OAjoYpgoPD8GrmpD7j1YkJZ4dJJtxVhSOUYjs8/w3mXXj/+BV5JmWRQVaokVbcdyOv6cIno6GAQDKZ5zguT6bsZnUNnFNHskf6iW1pAnT56nyAsMeqOmj/n+ZYoK6PoXBjO3y1tqVg5u6hgAWcMlUeSCnKceA0TxgxWIBNgBWlEnJ2GAlQIqQx9mjRfygRgryDo3EaD3zZvFTpLvD199a3Ez0+9GD3AbJ9hSA+ahEGw2pUul/qRUJHFXYe2t6/xgQKBgQDGzsXKEYYAWsgzv/ZO79fGRhDSvlm4NSTdEbEKcJKMY2rDIxa2Luf8IP6PRZJES6UQ7RAIwY1hMcx1C+EkFvq4DvbcjS80RySHUHjIFoz13yuvBZSMaIgIZ5UW6CR0sBCmz4lPtD8ZKAZvQ/VD08MERSutrASOtoEK2QyHeR/CWwKBgQCz0Tw0kGE4eX6GDpd5dQvsS4pdhvC1anQXQswHAk1fVK2OKJvyvK3XbrV39CS4GfMU8e28Xhrmta5N5pW9eiTwTGxiMq/v2TjF2d15XzS22oSxQvbmwKBPyi0sKnmmHtPSKDNZzFu08z8jmLbWijucxXcj+clK3/2kk+YudllcqwKBgAGyG8/IbHsuSwzd80zjENUZHeWeSAehNGpKT1dGdImMA4ocj4IITmRBJ8qzDjdU6diGHR/l/r24fgT1j/sN0x+kyQhCkAeDH9WjoxQZ1SP3vlik1IqKDbb8ozHp0v3HzqyNkp9Ca1Ncmwlx6/KjKMOtj1zQ3c0V023zQf8Z0mKHAoGAKzjrGNNvmwyRHhYZ0OcSk5zgyHRsHZ9WAlVbB4BFKtoG0bnvKlyyCKui0Q+NV/dc17cDZxjTrIsVN8JqUd4vTNeB4eS/J472N5CTzN3WpPFHnfgzsumwXx2A2DHphcW5MrXZCge2L3ucvKizokQd6iQI7EvZV7cZl9q5JIfsGPsCgYANtQxJGrt+BclJAG5ANbyQmNowO5KMrKBaoSj37zJ9HtuPLhbv7b6yyKTg/RKUSJFPfvVj3w8zy66kLapMYQtlMfKQ0O70dVQ8ZqkTRkYoIlGFSS4xruqP1Rx9+OabEbvTxw7gxY6/bTiULXKv2gsU+DgWkDWhcYmgboLOy9jaGA==
+    appPrivateKey: MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCLpRHdDLRZQuwUkBB1tVU3Gd2IRrqYd/0fYDb/fuG3xOswC8/SjcAbU0WLu0Rd1hUrzVEalcw3uyiwMsgj8Tv1HkELhEAedT3BqU96l8do/WoNR2l+H0mx/2rv41Ec7dZd84+zULIasNX8ayvyX7OJBusWsLxRpOekGteHbGcziOPQ3SsfmAGsJFzymP2/vDuFWwMODYkL4X3ZG7leDyURYIOyjE8xx7SLxlRXhDoPAW5O9VahZCp19xeRj+kC5JjTBnBpUbWMsE+STlXyIuX/RCH9jdDOd9qIVRasMhJzuBjG/S6TsHAqcgBIxe+G9ntgmQWPMmpPLD79e//VsobJAgMBAAECggEAWJJ6ohpMydEIrIIz7nT1d92QBb/W2p5AjoYYXDW+NTFRe0gCqSn/j1Vh5x8AXgRLqVyw9IvO3Ap55EhRaXq47OAjoYpgoPD8GrmpD7j1YkJZ4dJJtxVhSOUYjs8/w3mXXj/+BV5JmWRQVaokVbcdyOv6cIno6GAQDKZ5zguT6bsZnUNnFNHskf6iW1pAnT56nyAsMeqOmj/n+ZYoK6PoXBjO3y1tqVg5u6hgAWcMlUeSCnKceA0TxgxWIBNgBWlEnJ2GAlQIqQx9mjRfygRgryDo3EaD3zZvFTpLvD199a3Ez0+9GD3AbJ9hSA+ahEGw2pUul/qRUJHFXYe2t6/xgQKBgQDGzsXKEYYAWsgzv/ZO79fGRhDSvlm4NSTdEbEKcJKMY2rDIxa2Luf8IP6PRZJES6UQ7RAIwY1hMcx1C+EkFvq4DvbcjS80RySHUHjIFoz13yuvBZSMaIgIZ5UW6CR0sBCmz4lPtD8ZKAZvQ/VD08MERSutrASOtoEK2QyHeR/CWwKBgQCz0Tw0kGE4eX6GDpd5dQvsS4pdhvC1anQXQswHAk1fVK2OKJvyvK3XbrV39CS4GfMU8e28Xhrmta5N5pW9eiTwTGxiMq/v2TjF2d15XzS22oSxQvbmwKBPyi0sKnmmHtPSKDNZzFu08z8jmLbWijucxXcj+clK3/2kk+YudllcqwKBgAGyG8/IbHsuSwzd80zjENUZHeWeSAehNGpKT1dGdImMA4ocj4IITmRBJ8qzDjdU6diGHR/l/r24fgT1j/sN0x+kyQhCkAeDH9WjoxQZ1SP3vlik1IqKDbb8ozHp0v3HzqyNkp9Ca1Ncmwlx6/KjKMOtj1zQ3c0V023zQf8Z0mKHAoGAKzjrGNNvmwyRHhYZ0OcSk5zgyHRsHZ9WAlVbB4BFKtoG0bnvKlyyCKui0Q+NV/dc17cDZxjTrIsVN8JqUd4vTNeB4eS/J472N5CTzN3WpPFHnfgzsumwXx2A2DHphcW5MrXZCge2L3ucvKizokQd6iQI7EvZV7cZl9q5JIfsGPsCgYANtQxJGrt+BclJAG5ANbyQmNowO5KMrKBaoSj37zJ9HtuPLhbv7b6yyKTg/RKUSJFPfvVj3w8zy66kLapMYQtlMfKQ0O70dVQ8ZqkTRkYoIlGFSS4xruqP1Rx9+OabEbvTxw7gxY6/bTiULXKv2gsU+DgWkDWhcYmgboLOy9jaGA==
     # 支付宝公钥，由支付宝生成
-    aliPayPublicKey: MIIBIjANBgk33qhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv0HOyctXROVxRjc+uobemsoJ9W5N8VTIIszGaL3nEsg4CrfF5IjjNyYxnSih+CHFux5mS/8Z2rgr8oyYi4v0VZWQz/xRV40vyi2ZYgJ51bHadrKEfeU3PUsJ/3uO1TX2N+cyPR/Xbqu/lggQssqhs/LYACpf/2Iopb4lbD0CyMQNp6lPKYQhgJe3wmmtQ1u26Y1kHNG1qV+lSCm4zL067PjjZtdNG/+g7Vh4ZzwVqW6LLRn9f68jO8wGIQuvSWbbLZJ/fCr2QaqxU9arIHpsJYpk8gb19aHkvBSbOgj270mIk/35OPb8QMP9GbAGW0cKyrT1u9cHbg7jnzDjatJmKQIDAQAB
+    aliPayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv0HOyctXROVxRjc+uobemsoJ9W5N8VTIIszGaL3nEsg4CrfF5IjjNyYxnSih+CHFux5mS/8Z2rgr8oyYi4v0VZWQz/xRV40vyi2ZYgJ51bHadrKEfeU3PUsJ/3uO1TX2N+cyPR/Xbqu/lggQssqhs/LYACpf/2Iopb4lbD0CyMQNp6lPKYQhgJe3wmmtQ1u26Y1kHNG1qV+lSCm4zL067PjjZtdNG/+g7Vh4ZzwVqW6LLRn9f68jO8wGIQuvSWbbLZJ/fCr2QaqxU9arIHpsJYpk8gb19aHkvBSbOgj270mIk/35OPb8QMP9GbAGW0cKyrT1u9cHbg7jnzDjatJmKQIDAQAB
     # 设置未付款支付宝交易的超时时间
     timeoutExpress: 30m
     # 支付宝网关
     serverUrl: https://openapi.alipaydev.com/gateway.do
     # 异步通知地址
-    notifyUrl: http://test.mis33sfrui3ts.cn:8013/v1/pay/ali/actions/notify
+    notifyUrl: http://test.missfruits.cn:8013/v1/pay/ali/actions/notify
 # 微信支付配置
 wx:
   # 微信开放平台审核通过的应用APPID
-  appId: wxe0b9b5f17800fd32033
+  appId: wxe0b9b5f17800fd20
   # 微信支付分配的商户号
-  mchId: 1515033321001
+  mchId: 1515021001
   # 微信退款接口地址
   refundUrl: https://api.mch.weixin.qq.com/secapi/pay/refund
   # 商户平台设置的密钥
-  key: inPhEaAdPFXkECQx8cmUWY7933awi0CKig
+  key: inPhEaAdPFXkECQx8cmUWY79awi0CKig
   #微信证书在本地上的存放目录
   certPath: D:\aiguo\cert\
 # 高德地图
 amap:
   # 请求服务权限标识
-  key: ee858b8d915428ef8c08576f2783aa77
+  key: 2939fe32561055ca317b22a5377d52bd
   # 高德地图API调用地址
   host: https://restapi.amap.com
   # 定位地点默认匹配距离
@@ -231,27 +231,27 @@ amap:
 # 达达物流
 dada:
   # 应用Key，对应开发者账号中的app_key，固定
-  appKey: dada3b4a353309f336f5c
+  appKey: dada3b4a353309f6f5c
   # 应用密钥，对应开发者账号中的app_secret，固定
-  appSecret: 185466efb7033541f9a5ea6390b9250fb4
+  appSecret: 185466efb70541f9a5ea6390b9250fb4
   # API版本，固定
   v: 1.0
   # 商户编号（创建商户账号分配的编号），固定
-  sourceId: 7375333
+  sourceId: 73753
   # 环境地址
   host: http://newopen.qa.imdada.cn
   # callback地址
-  callbackUrl: http://test.mis33frui33ts.cn:8014/v1/order/dada/actions/notify
+  callbackUrl: http://test.missfruits.cn:8014/v1/order/dada/actions/notify
 # 个推
 getui:
-  appKey: xgFqqNa933BT8k33HzywhkaVk1
-  masterSecret: FDYZ33De33oNKa6WL4PEfj1iAA
+  appKey: xgFqqNa9BT8kHzywhkaVk1
+  masterSecret: FDYZDeoNKa6WL4PEfj1iAA
   host: https://api.getui.com/apiex.htm
-  appId: 13VeF3D33ovm733TNJeys8z9H8
+  appId: 13VeF3Dovm7TNJeys8z9H8
 # 快递100
 kuaidi100:
-  customer: C368E9033B942D1776AD9F7516C5AFEA26
-  key: EDvARSZS23373335
+  customer: C368E90B942D1776AD9F7516C5AFEA26
+  key: EDvARSZS2735
   host: https://poll.kuaidi100.com/poll
-  callbackUrl: http://test.m3issf33ui3ts.cn:8014/v1/order/kuaidi100/actions/notify
+  callbackUrl: http://test.missfruits.cn:8014/v1/order/kuaidi100/actions/notify
   queryHost: http://poll.kuaidi100.com/poll/query.do

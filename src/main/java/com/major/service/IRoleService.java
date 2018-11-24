@@ -68,7 +68,7 @@ public interface IRoleService extends IService<Role> {
      * @return
      * @throws Exception
      */
-   boolean changeRole(Long sysUserId, Long roleId) throws Exception;
+   boolean changeRole(Long sysUserId,Long roleId) throws Exception;
 
     /**
      * 针对爱果小店添加店铺

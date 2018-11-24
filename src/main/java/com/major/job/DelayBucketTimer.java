@@ -1,7 +1,6 @@
 package com.major.job;
 
 import com.major.common.util.DateUtils;
-import com.ag.manage.job.queue.*;
 import com.major.job.queue.*;
 import lombok.Getter;
 import lombok.Setter;

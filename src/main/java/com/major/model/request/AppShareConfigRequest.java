@@ -33,7 +33,7 @@ public class AppShareConfigRequest {
     @NotNull(message = "APP分享链接不能为空")
     private String shareUrl;
 
-    @ApiModelProperty(value = "APP分享类型：0-邀请注册；1：下载App", required = true)
+    @ApiModelProperty(value = "APP分享类型：0-邀请注册；1：下载App 2:小贴士 3：文章", required = true)
     @NotNull(message = "APP分享类型不能为空")
     private Integer shareType;
 

@@ -8,6 +8,7 @@ import com.major.model.request.DadaOrderNotifyRequest;
 import com.major.model.response.DadaApiResponse;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -28,6 +29,7 @@ import java.util.Map;
  * <p>Updater:                          </p>
  * <p>Update Comments:                  </p>
  */
+@Slf4j
 public class DadaUtils {
 
     /**
@@ -163,6 +165,7 @@ public class DadaUtils {
             String resp = HttpUtils.postRequest(url, requestParam);
             return JSONUtil.fromJson(resp, DadaApiResponse.class);
         }catch (Exception e){
+            log.error("新增达达订单失败签名为："+sign);
             return DadaApiResponse.except();
         }
     }

@@ -1,6 +1,5 @@
 package com.major.config;
 
-import com.baomidou.mybatisplus.entity.GlobalConfiguration;
 import com.baomidou.mybatisplus.mapper.ISqlInjector;
 import com.baomidou.mybatisplus.mapper.LogicSqlInjector;
 import com.baomidou.mybatisplus.plugins.PaginationInterceptor;
@@ -25,7 +24,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @EnableTransactionManagement
 @Configuration
-@MapperScan("com.ag.manage.mapper*")
+@MapperScan("com.major.mapper*")
 public class MybatisPlusConfig {
 
     /**

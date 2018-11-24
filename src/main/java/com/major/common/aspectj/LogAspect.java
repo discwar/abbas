@@ -43,7 +43,7 @@ public class LogAspect {
     /**
      * 配置织入点
      */
-    @Pointcut("@annotation(Log)")
+    @Pointcut("@annotation(com.major.common.aspectj.annotation.Log)")
     public void logPointCut() {
     }
 

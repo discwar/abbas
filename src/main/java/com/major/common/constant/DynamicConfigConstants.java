@@ -114,6 +114,10 @@ public interface DynamicConfigConstants {
      * 爱果LOGO地址
      */
     String AG_LOGO_URL = "agLogoUrl";
+    /**
+     * 向达达派单延迟时间
+     */
+    String  ADD_DADA_ORDER_TIME = "addDaDaOrderTime";
 
     String DYNAMIC_TITLE = "dynamic_title";
     String DYNAMIC_DESC = "dynamic_desc";

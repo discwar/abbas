@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.FieldFill;
 import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Getter;
 import lombok.Setter;
@@ -64,7 +65,7 @@ public class OrderSettlement extends Model<OrderSettlement> {
     /**
      * 申请结算时间
      */
-    @TableField("create_time")
+    @TableField(value="create_time", fill = FieldFill.INSERT)
     private Date createTime;
 
     @Override

@@ -16,6 +16,6 @@ public interface ISysUserRoleService {
      * @param sysUserId
      * @param roleId
      */
-    void sysUserBindRole(Long sysUserId, Long roleId);
+    void sysUserBindRole(Long sysUserId,Long roleId);
 
 }

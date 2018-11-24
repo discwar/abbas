@@ -32,7 +32,7 @@ public class LogWithdrawCash extends SuperEntity<LogWithdrawCash> {
      * 所属对象ID；如果是用户，则对应user表ID
      */
     @TableField("target_id")
-    private Integer targetId;
+    private Long targetId;
     /**
      * 提现金额
      */

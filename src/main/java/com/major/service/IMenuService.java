@@ -12,7 +12,7 @@ public interface IMenuService extends IService<Menu> {
 
     boolean addMenu(MenuRequest menuRequest);
 
-    boolean updateMenu(MenuRequest menuRequest, Long menu_id);
+    boolean updateMenu(MenuRequest menuRequest ,Long menu_id);
 
     boolean deleteMenu(Long menu_id);
     /**

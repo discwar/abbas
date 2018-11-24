@@ -1,6 +1,7 @@
 package com.major.service;
 
 import com.major.common.constant.Constants;
+import com.major.common.constant.DynamicConfigConstants;
 import com.major.common.constant.UserConstants;
 import com.major.common.enums.SysUserStatusEnum;
 import com.major.common.util.MessageUtils;
@@ -42,11 +43,14 @@ public class LoginService {
     @Autowired
     private IMenuService menuService;
 
+    @Autowired
+    private IShopService shopService;
 
     @Autowired
-    private IRoleService roleService;
+    private  IRoleService roleService;
 
-
+    @Autowired
+    private IDynamicConfigService dynamicConfigService;
 
     public SysUser authentication(String username, String password) {
         // 用户名或密码为空 错误
@@ -106,6 +110,9 @@ public class LoginService {
         resultMap.put("token", ShiroUtils.getSessionId());
         resultMap.put("menu_list", menus);
         resultMap.put("user_info", userMap);
+        resultMap.put("shop_info", shopService.selectShopInfoBySysUserId(sysUser.getId()));
+        String agLogoUrl = dynamicConfigService.getDynamicDesc(DynamicConfigConstants.DynamicTypeEnum.SYS.getValue(), DynamicConfigConstants.AG_LOGO_URL);
+        resultMap.put("ag_logo_url", agLogoUrl);
         return resultMap;
     }
 

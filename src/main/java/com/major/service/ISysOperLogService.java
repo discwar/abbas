@@ -34,7 +34,7 @@ public interface ISysOperLogService extends IService<SysOperLog> {
      * @return
      */
     Page<Map<String, Object>> selectSysLoginLogPage(Page<Map<String, Object>> page, Long sysUserId,
-                                                    String searchSysUserName, String title, String action, String channel, Integer status, String createTimeStart, String createTimeStop);
+                                                    String searchSysUserName, String title, String action, String channel, Integer status ,String createTimeStart,String createTimeStop);
 
     /**
      * 获取单条操作记录

@@ -20,7 +20,7 @@ import java.math.BigDecimal;
 public class Shop extends SuperEntity<Shop> {
 
     @TableField("sys_user_id")
-    private Integer sysUserId;
+    private Long sysUserId;
     /**
      * 店铺名称
      */
@@ -153,4 +153,8 @@ public class Shop extends SuperEntity<Shop> {
     @TableField("banks_id")
     private Integer banksId;
 
+    /**
+     * 可提现金额
+     */
+    private BigDecimal canCarryMoney;
 }

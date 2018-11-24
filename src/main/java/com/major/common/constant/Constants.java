@@ -298,5 +298,15 @@ public interface Constants {
     Integer  SETTLEMENT_TYPE_MANUAL=0;
     Integer  SETTLEMENT_TYPE_INSTANT=1;
 
+    /**
+     * 流水来源：0-订单结算；1-提现申请
+     */
+    Integer SOURCE_TYPE_ORDER=0;
+    Integer SOURCE_TYPE_APPLY=1;
 
+    /**
+     * 是否活动商品:0-全部；1是；2-不是
+     */
+    Integer IS_ACTIVITY_YES=1;
+    Integer IS_ACTIVITY_NO=2;
 }

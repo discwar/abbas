@@ -28,5 +28,5 @@ public interface ISysLoginLogService extends IService<SysLoginLog> {
      * @param sysUserId
      * @return
      */
-    Page<Map<String, Object>> selectSysLoginLogPage(Page<Map<String, Object>> page, Long sysUserId, Integer status, String ipAddress, String createTimeStart, String createTimeStop);
+    Page<Map<String, Object>> selectSysLoginLogPage(Page<Map<String, Object>> page, Long sysUserId, Integer status,String ipAddress,String createTimeStart,String createTimeStop);
 }

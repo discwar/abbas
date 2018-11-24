@@ -36,9 +36,9 @@ public interface TipsCategoryMapper extends BaseMapper<TipsCategory> {
             "tips_category tc " +
             "LEFT JOIN tips t ON tc.id = t.tips_category_id " +
             "WHERE " +
-            "tc.`status`<> 0 "+
-            "GROUP BY " +
-            "tc.`name` ")
+            "tc.`status`<> 0   GROUP BY tc.id   "+
+            "ORDER BY " +
+            "tc.category_sort ")
     List<Map<String, Object>> selectTipsCategoryPage(Pagination page);
 
     /**
@@ -56,5 +56,11 @@ public interface TipsCategoryMapper extends BaseMapper<TipsCategory> {
     @Select("select * from tips where  tips_category_id=#{categoryId}   and status <> 0 ")
     List<Tips> selectTipsByCategoryId(@Param("categoryId") Long categoryId);
 
-
+    /**
+     * 查询分类是否重复
+     * @param name
+     * @return
+     */
+    @Select(" SELECT tc.id,tc.`name` FROM tips_category tc WHERE  tc.`status`=1  and  tc.`name`=#{name}")
+    List<Map<String, Object>> selectTipsCategoryByName(@Param("name") String name);
 }

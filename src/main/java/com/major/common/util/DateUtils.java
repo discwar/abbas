@@ -50,6 +50,19 @@ public class DateUtils {
     }
 
     /**
+     * 获取指定时间加减分钟后的时间戳
+     * @param currentTime
+     * @param minute
+     * @return
+     */
+    public static long getTimestamp(Date currentTime, int minute) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(currentTime);
+        c.add(Calendar.MINUTE, minute);
+        return c.getTimeInMillis();
+    }
+
+    /**
      * 获取当前时间戳，单位毫秒
      * @return
      */

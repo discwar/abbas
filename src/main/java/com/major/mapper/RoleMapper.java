@@ -63,7 +63,7 @@ public interface RoleMapper extends BaseMapper<Role> {
             "LEFT JOIN menu m ON rm.menu_id = m.id " +
             "WHERE " +
             "r.`status`=#{status}  AND r.id=#{roleId} AND m.menu_type<>'F'  ORDER BY m.menu_sort " )
-    List<Map<String, Object>> selectRoleListByRoleId(@Param("roleId") Long roleId, @Param("status") Integer status);
+    List<Map<String, Object>> selectRoleListByRoleId(@Param("roleId") Long roleId,@Param("status") Integer status);
 
 
     @Select("SELECT id , r.role_name   FROM  role r  " +

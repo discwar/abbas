@@ -27,7 +27,7 @@ public interface RoleMenuMapper extends BaseMapper<RoleMenu> {
      * 根据menuId删除
      */
     @Delete("delete from role_menu where menu_id=#{menuId} and role_id=#{roleId} ")
-    int deleteRoleByType(@Param("menuId") Long menuId, @Param("roleId") Long roleId);
+    int deleteRoleByType(@Param("menuId") Long menuId,@Param("roleId") Long roleId);
 
     /**
      * 查找当前角色的菜单类型为F的数据

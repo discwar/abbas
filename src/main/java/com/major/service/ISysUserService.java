@@ -47,14 +47,14 @@ public interface ISysUserService extends IService<SysUser> {
      * @param userId
      * @return
      */
-    boolean deleteSysUser(Long userId);
+    boolean deleteSysUser( Long userId);
 
     /**
      * 获取管理员分页列表
      * @param page
      * @return
      */
-    Page<Map<String, Object>> selectSysUserPage(Page<Map<String, Object>> page, String userName, String remark, Long roleId);
+    Page<Map<String, Object>> selectSysUserPage(Page<Map<String, Object>> page,String userName,String remark,Long roleId);
 
     /**
      * 个人管理-修改密码
@@ -78,7 +78,7 @@ public interface ISysUserService extends IService<SysUser> {
      * @param Id
      * @return
      */
-    boolean resetSysUserPwd(Long Id);
+    boolean resetSysUserPwd( Long Id);
 
     /**
      * 根据用户id查询角色相关
